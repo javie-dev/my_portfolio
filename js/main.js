@@ -238,6 +238,34 @@
 	};
 	contentWayPoint();
 
+	var skillsSection = document.getElementById('skills-section');
+	if (skillsSection) {
+		var skillMeters = skillsSection.querySelectorAll('[data-skill-level]');
+		skillMeters.forEach(function(meter) {
+			var requestedLevel = Number(meter.getAttribute('data-skill-level'));
+			var level = Number.isFinite(requestedLevel) ? Math.max(0, Math.min(100, requestedLevel)) : 0;
+			var percentage = meter.parentNode.querySelector('.skill-percentage');
+
+			meter.setAttribute('aria-valuenow', level);
+			meter.style.setProperty('--skill-level', level + '%');
+			if (percentage) {
+				percentage.textContent = level + '%';
+			}
+		});
+
+		if ('IntersectionObserver' in window) {
+			var skillsObserver = new IntersectionObserver(function(entries, observer) {
+				if (entries.some(function(entry) { return entry.isIntersecting; })) {
+					skillsSection.classList.add('skills-visible');
+					observer.disconnect();
+				}
+			}, { threshold: 0.1 });
+			skillsObserver.observe(skillsSection.querySelector('.programming-skill-grid') || skillsSection);
+		} else {
+			skillsSection.classList.add('skills-visible');
+		}
+	}
+
 	// magnific popup
 	$('.image-popup').magnificPopup({
     type: 'image',
