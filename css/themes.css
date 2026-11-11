@@ -914,3 +914,230 @@ textarea.form-control {
     margin-top: 2.5rem;
   }
 }
+
+.ftco-project {
+  overflow-x: clip;
+}
+
+.projects-carousel {
+  width: 100%;
+  min-width: 0;
+}
+
+.projects-carousel__controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+}
+
+.projects-carousel__arrow {
+  display: inline-flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--theme-border);
+  border-radius: 50%;
+  background: var(--theme-surface);
+  color: var(--theme-heading);
+  font-size: 1.15rem;
+  cursor: pointer;
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.projects-carousel__arrow:hover:not(:disabled),
+.projects-carousel__arrow:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--theme-accent);
+  background: var(--theme-accent);
+  color: var(--theme-on-accent);
+}
+
+.projects-carousel__arrow:focus-visible,
+.project-card__github:focus-visible,
+.projects-carousel__all-link:focus-visible,
+.projects-carousel__viewport:focus-visible {
+  outline: 2px solid var(--theme-accent);
+  outline-offset: 3px;
+}
+
+.projects-carousel__arrow:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.projects-carousel__viewport {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: var(--theme-accent) var(--theme-panel);
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
+  cursor: grab;
+}
+
+.projects-carousel__viewport.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+  user-select: none;
+}
+
+.projects-carousel__track {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: stretch;
+  gap: 1.5rem;
+  padding: 0.25rem 0 1rem;
+}
+
+.project-card {
+  display: flex;
+  flex: 0 0 calc((100% - 3rem) / 3);
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  scroll-snap-align: start;
+  border: 1px solid var(--theme-border);
+  border-radius: 0.8rem;
+  background: var(--theme-surface);
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease, background-color 240ms ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(var(--theme-accent-rgb), 0.55);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.16);
+}
+
+.project-card__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  background: var(--theme-panel);
+}
+
+.project-card__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.35rem;
+}
+
+.project-card__title {
+  margin: 0 0 0.55rem;
+  color: var(--theme-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.project-card__description {
+  min-height: 1.6rem;
+  margin: 0 0 0.9rem;
+  color: var(--theme-text);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 1.2rem;
+}
+
+.project-card__tag {
+  display: inline-flex;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid var(--theme-border);
+  border-radius: 999px;
+  background: var(--theme-panel);
+  color: var(--theme-text);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.project-card__github,
+.projects-carousel__all-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border: 1px solid var(--theme-accent);
+  border-radius: 0.45rem;
+  background: var(--theme-accent);
+  color: var(--theme-on-accent) !important;
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none !important;
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.project-card__github {
+  margin-top: auto;
+  padding: 0.65rem 0.85rem;
+}
+
+.projects-carousel__all {
+  display: flex;
+  justify-content: center;
+  padding-top: 1.5rem;
+}
+
+.projects-carousel__all-link {
+  padding: 0.85rem 1.3rem;
+  font-size: 0.95rem;
+}
+
+.project-card__github:hover,
+.projects-carousel__all-link:hover {
+  transform: translateY(-2px);
+  border-color: var(--theme-link);
+  background: var(--theme-link);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.14);
+  color: var(--theme-on-accent) !important;
+}
+
+@media (max-width: 991.98px) {
+  .project-card {
+    flex-basis: calc((100% - 1.5rem) / 2);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .projects-carousel__controls {
+    margin-bottom: 0.65rem;
+  }
+
+  .project-card {
+    flex-basis: 88%;
+  }
+
+  .project-card__content {
+    padding: 1.15rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projects-carousel__viewport {
+    scroll-behavior: auto;
+  }
+
+  .projects-carousel__arrow,
+  .project-card,
+  .project-card__github,
+  .projects-carousel__all-link {
+    transition-duration: 0.01ms;
+  }
+}

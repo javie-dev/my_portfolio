@@ -269,8 +269,8 @@
 			<div class="container">
 				<div class="row justify-content-center pb-5">
           <div class="col-md-12 heading-section text-center ftco-animate">
-          	<h1 class="big big-2">Skills</h1>
-            <h2 class="mb-4">My Skills</h2>
+          	<h1 class="big big-2">Skills & Technologies</h1>
+            <h2 class="mb-4">Skills & Technologies</h2>
           </div>
         </div>
 				<div class="skills-group">
@@ -320,7 +320,6 @@
 							<div class="skill-list">
 								<div class="skill-item"><div class="skill-item__meta"><span>Laravel</span><span class="skill-percentage"></span></div><div class="skill-meter" data-skill-level="55" role="progressbar" aria-label="Laravel proficiency" aria-valuemin="0" aria-valuemax="100"><span class="skill-meter__fill"></span></div></div>
 								<div class="skill-item"><div class="skill-item__meta"><span>React Native</span><span class="skill-percentage"></span></div><div class="skill-meter" data-skill-level="52" role="progressbar" aria-label="React Native proficiency" aria-valuemin="0" aria-valuemax="100"><span class="skill-meter__fill"></span></div></div>
-								<div class="skill-item"><div class="skill-item__meta"><span>Git</span><span class="skill-percentage"></span></div><div class="skill-meter" data-skill-level="68" role="progressbar" aria-label="Git proficiency" aria-valuemin="0" aria-valuemax="100"><span class="skill-meter__fill"></span></div></div>
 								<div class="skill-item"><div class="skill-item__meta"><span>GitHub</span><span class="skill-percentage"></span></div><div class="skill-meter" data-skill-level="68" role="progressbar" aria-label="GitHub proficiency" aria-valuemin="0" aria-valuemax="100"><span class="skill-meter__fill"></span></div></div>
 								<div class="skill-item"><div class="skill-item__meta"><span>VS Code</span><span class="skill-percentage"></span></div><div class="skill-meter" data-skill-level="78" role="progressbar" aria-label="VS Code proficiency" aria-valuemin="0" aria-valuemax="100"><span class="skill-meter__fill"></span></div></div>
 							</div>
@@ -356,70 +355,106 @@
     		<div class="row justify-content-center pb-5">
           <div class="col-md-12 heading-section text-center ftco-animate">
           	<h1 class="big big-2">Projects</h1>
-            <h2 class="mb-4">Our Projects</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+            <h2 class="mb-4">My Projects</h2>
           </div>
         </div>
-    		<div class="row">
-    			<div class="col-md-4">
-    				<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(images/project-4.jpg);">
-    					<div class="overlay"></div>
-	    				<div class="text text-center p-4">
-	    					<h3><a href="#">Branding &amp; Illustration Design</a></h3>
-	    					<span>Web Design</span>
-	    				</div>
-    				</div>
-  				</div>
-  				<div class="col-md-8">
-    				<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(images/project-5.jpg);">
-    					<div class="overlay"></div>
-	    				<div class="text text-center p-4">
-	    					<h3><a href="#">Branding &amp; Illustration Design</a></h3>
-	    					<span>Web Design</span>
-	    				</div>
-    				</div>
-  				</div>
-
-    			<div class="col-md-8">
-    				<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(images/project-1.jpg);">
-    					<div class="overlay"></div>
-	    				<div class="text text-center p-4">
-	    					<h3><a href="#">Branding &amp; Illustration Design</a></h3>
-	    					<span>Web Design</span>
-	    				</div>
-    				</div>
-
-    				<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(images/project-6.jpg);">
-    					<div class="overlay"></div>
-	    				<div class="text text-center p-4">
-	    					<h3><a href="#">Branding &amp; Illustration Design</a></h3>
-	    					<span>Web Design</span>
-	    				</div>
-    				</div>
-    			</div>
-    			<div class="col-md-4">
-    				<div class="row">
-    					<div class="col-md-12">
-		    				<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(images/project-2.jpg);">
-		    					<div class="overlay"></div>
-			    				<div class="text text-center p-4">
-			    					<h3><a href="#">Branding &amp; Illustration Design</a></h3>
-			    					<span>Web Design</span>
-			    				</div>
-		    				</div>
-	    				</div>
-	    				<div class="col-md-12">
-		    				<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(images/project-3.jpg);">
-		    					<div class="overlay"></div>
-			    				<div class="text text-center p-4">
-			    					<h3><a href="#">Branding &amp; Illustration Design</a></h3>
-			    					<span>Web Design</span>
-			    				</div>
-		    				</div>
-	    				</div>
-    				</div>
-    			</div>
-    		</div>
+        <div class="projects-carousel">
+          <div class="projects-carousel__controls" aria-label="Project carousel controls">
+            <button class="projects-carousel__arrow projects-carousel__previous" type="button" aria-label="Previous projects">
+              <span class="ion-ios-arrow-back" aria-hidden="true"></span>
+            </button>
+            <button class="projects-carousel__arrow projects-carousel__next" type="button" aria-label="Next projects">
+              <span class="ion-ios-arrow-forward" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="projects-carousel__viewport" tabindex="0" role="region" aria-label="My projects" id="projects-carousel">
+            <div class="projects-carousel__track">
+              <article class="project-card">
+                <img class="project-card__image" src="images/project-4.jpg" alt="Branding and illustration design project preview" loading="lazy">
+                <div class="project-card__content">
+                  <h3 class="project-card__title">Branding &amp; Illustration Design</h3>
+                  <p class="project-card__description">Web Design</p>
+                  <div class="project-card__tags" aria-label="Project category">
+                    <span class="project-card__tag">Web Design</span>
+                  </div>
+                  <a class="project-card__github" href="https://github.com/javie-dev/my_portfolio" target="_blank" rel="noopener noreferrer">
+                    <span class="icon-github" aria-hidden="true"></span> View on GitHub
+                  </a>
+                </div>
+              </article>
+              <article class="project-card">
+                <img class="project-card__image" src="images/project-5.jpg" alt="Branding and illustration design project preview" loading="lazy">
+                <div class="project-card__content">
+                  <h3 class="project-card__title">Branding &amp; Illustration Design</h3>
+                  <p class="project-card__description">Web Design</p>
+                  <div class="project-card__tags" aria-label="Project category">
+                    <span class="project-card__tag">Web Design</span>
+                  </div>
+                  <a class="project-card__github" href="https://github.com/javie-dev/my_portfolio" target="_blank" rel="noopener noreferrer">
+                    <span class="icon-github" aria-hidden="true"></span> View on GitHub
+                  </a>
+                </div>
+              </article>
+              <article class="project-card">
+                <img class="project-card__image" src="images/project-1.jpg" alt="Branding and illustration design project preview" loading="lazy">
+                <div class="project-card__content">
+                  <h3 class="project-card__title">Branding &amp; Illustration Design</h3>
+                  <p class="project-card__description">Web Design</p>
+                  <div class="project-card__tags" aria-label="Project category">
+                    <span class="project-card__tag">Web Design</span>
+                  </div>
+                  <a class="project-card__github" href="https://github.com/javie-dev/my_portfolio" target="_blank" rel="noopener noreferrer">
+                    <span class="icon-github" aria-hidden="true"></span> View on GitHub
+                  </a>
+                </div>
+              </article>
+              <article class="project-card">
+                <img class="project-card__image" src="images/project-6.jpg" alt="Branding and illustration design project preview" loading="lazy">
+                <div class="project-card__content">
+                  <h3 class="project-card__title">Branding &amp; Illustration Design</h3>
+                  <p class="project-card__description">Web Design</p>
+                  <div class="project-card__tags" aria-label="Project category">
+                    <span class="project-card__tag">Web Design</span>
+                  </div>
+                  <a class="project-card__github" href="https://github.com/javie-dev/my_portfolio" target="_blank" rel="noopener noreferrer">
+                    <span class="icon-github" aria-hidden="true"></span> View on GitHub
+                  </a>
+                </div>
+              </article>
+              <article class="project-card">
+                <img class="project-card__image" src="images/project-2.jpg" alt="Branding and illustration design project preview" loading="lazy">
+                <div class="project-card__content">
+                  <h3 class="project-card__title">Branding &amp; Illustration Design</h3>
+                  <p class="project-card__description">Web Design</p>
+                  <div class="project-card__tags" aria-label="Project category">
+                    <span class="project-card__tag">Web Design</span>
+                  </div>
+                  <a class="project-card__github" href="https://github.com/javie-dev/my_portfolio" target="_blank" rel="noopener noreferrer">
+                    <span class="icon-github" aria-hidden="true"></span> View on GitHub
+                  </a>
+                </div>
+              </article>
+              <article class="project-card">
+                <img class="project-card__image" src="images/project-3.jpg" alt="Branding and illustration design project preview" loading="lazy">
+                <div class="project-card__content">
+                  <h3 class="project-card__title">Branding &amp; Illustration Design</h3>
+                  <p class="project-card__description">Web Design</p>
+                  <div class="project-card__tags" aria-label="Project category">
+                    <span class="project-card__tag">Web Design</span>
+                  </div>
+                  <a class="project-card__github" href="https://github.com/javie-dev/my_portfolio" target="_blank" rel="noopener noreferrer">
+                    <span class="icon-github" aria-hidden="true"></span> View on GitHub
+                  </a>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="projects-carousel__all">
+            <a class="projects-carousel__all-link" href="https://github.com/javie-dev/my_portfolio" target="_blank" rel="noopener noreferrer">
+              <span class="icon-github" aria-hidden="true"></span> View All Projects on GitHub
+            </a>
+          </div>
+        </div>
     	</div>
     </section>
 
