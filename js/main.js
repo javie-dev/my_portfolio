@@ -199,6 +199,95 @@
 		updateProjectControls();
 	}
 
+	var certificatesCarousel = document.querySelector('#certificates-carousel');
+	if (certificatesCarousel) {
+		var certificatesTrack = certificatesCarousel.querySelector('.certificate-carousel__track');
+		var certificateControls = document.querySelector('.certificate-carousel__controls');
+		var previousCertificates = document.querySelector('.certificate-carousel__previous');
+		var nextCertificates = document.querySelector('.certificate-carousel__next');
+		var emptyCertificatesMessage = document.querySelector('.certificate-carousel__empty');
+		var certificates = Array.isArray(window.certificates) ? window.certificates : [];
+
+		var appendCertificateText = function(parent, tagName, className, value) {
+			var element = document.createElement(tagName);
+			element.className = className;
+			element.textContent = value;
+			parent.appendChild(element);
+			return element;
+		};
+
+		certificates.forEach(function(certificate) {
+			if (!certificate || !certificate.title || !certificate.image || !certificate.description) {
+				return;
+			}
+
+			var card = document.createElement('article');
+			card.className = 'certificate-card';
+
+			var imageLink = document.createElement('a');
+			imageLink.className = 'certificate-card__image-link';
+			imageLink.href = certificate.image;
+			imageLink.target = '_blank';
+			imageLink.rel = 'noopener noreferrer';
+			imageLink.setAttribute('aria-label', 'View larger image: ' + certificate.title);
+
+			var image = document.createElement('img');
+			image.className = 'certificate-card__image';
+			image.src = certificate.image;
+			image.alt = certificate.title;
+			image.loading = 'lazy';
+			imageLink.appendChild(image);
+			card.appendChild(imageLink);
+
+			var content = document.createElement('div');
+			content.className = 'certificate-card__content';
+			appendCertificateText(content, 'h3', 'certificate-card__title', certificate.title);
+			appendCertificateText(content, 'p', 'certificate-card__description', certificate.description);
+			appendCertificateText(
+				content,
+				'p',
+				'certificate-card__meta',
+				[certificate.organization, certificate.date].filter(Boolean).join(' · ')
+			);
+			card.appendChild(content);
+			certificatesTrack.appendChild(card);
+		});
+
+		var renderedCertificates = certificatesTrack.querySelectorAll('.certificate-card');
+		emptyCertificatesMessage.hidden = renderedCertificates.length > 0;
+		certificateControls.hidden = renderedCertificates.length === 0;
+		previousCertificates.disabled = true;
+		nextCertificates.disabled = renderedCertificates.length < 2;
+
+		if (renderedCertificates.length > 0) {
+			var updateCertificateControls = function() {
+				var maxScroll = certificatesCarousel.scrollWidth - certificatesCarousel.clientWidth;
+				previousCertificates.disabled = certificatesCarousel.scrollLeft <= 1;
+				nextCertificates.disabled = certificatesCarousel.scrollLeft >= maxScroll - 1;
+			};
+			var scrollCertificates = function(direction) {
+				var firstCard = certificatesTrack.querySelector('.certificate-card');
+				var trackStyles = window.getComputedStyle(certificatesTrack);
+				var gap = parseFloat(trackStyles.columnGap) || 0;
+				var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+				certificatesCarousel.scrollBy({
+					left: direction * (firstCard.getBoundingClientRect().width + gap),
+					behavior: reducedMotion ? 'auto' : 'smooth'
+				});
+			};
+
+			previousCertificates.addEventListener('click', function() {
+				scrollCertificates(-1);
+			});
+			nextCertificates.addEventListener('click', function() {
+				scrollCertificates(1);
+			});
+			certificatesCarousel.addEventListener('scroll', updateCertificateControls, { passive: true });
+			window.addEventListener('resize', updateCertificateControls);
+			updateCertificateControls();
+		}
+	}
+
 	$('nav .dropdown').hover(function(){
 		var $this = $(this);
 		// 	 timer;
@@ -327,34 +416,6 @@
 		} , { offset: '95%' } );
 	};
 	contentWayPoint();
-
-	var skillsSection = document.getElementById('skills-section');
-	if (skillsSection) {
-		var skillMeters = skillsSection.querySelectorAll('[data-skill-level]');
-		skillMeters.forEach(function(meter) {
-			var requestedLevel = Number(meter.getAttribute('data-skill-level'));
-			var level = Number.isFinite(requestedLevel) ? Math.max(0, Math.min(100, requestedLevel)) : 0;
-			var percentage = meter.parentNode.querySelector('.skill-percentage');
-
-			meter.setAttribute('aria-valuenow', level);
-			meter.style.setProperty('--skill-level', level + '%');
-			if (percentage) {
-				percentage.textContent = level + '%';
-			}
-		});
-
-		if ('IntersectionObserver' in window) {
-			var skillsObserver = new IntersectionObserver(function(entries, observer) {
-				if (entries.some(function(entry) { return entry.isIntersecting; })) {
-					skillsSection.classList.add('skills-visible');
-					observer.disconnect();
-				}
-			}, { threshold: 0.1 });
-			skillsObserver.observe(skillsSection.querySelector('.programming-skill-grid') || skillsSection);
-		} else {
-			skillsSection.classList.add('skills-visible');
-		}
-	}
 
 	// magnific popup
 	$('.image-popup').magnificPopup({
